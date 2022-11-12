@@ -9,6 +9,15 @@
 // h. Set the other desired element attributes.
 // i. Return the created element.
 
+function createElemWithText(elem = "p", textContent = "", className) {
+  const newEle = document.createElement(`${elem}`);
+  const newContent = document.createTextNode(`${textContent}`);
+  newEle.appendChild(newContent);
+  if (className) newEle.classList.add(`${className}`);
+
+  return newEle;
+}
+
 // 2. createSelectOptions
 // a. Test users JSON data available here: https://jsonplaceholder.typicode.com/users
 // b. For testing (not in function) you may want to define users with the test data.
