@@ -31,6 +31,17 @@ function createElemWithText(elem = "p", textContent = "", className) {
 
 function createSelectOptions(userData) {
   if (!userData) return undefined;
+
+  let optionArray = [];
+
+  userData.forEach((user) => {
+    let optionEle = document.createElement("option");
+    optionEle.value = user.id;
+    optionEle.textContent = user.name;
+    optionArray.push(optionEle);
+  });
+
+  return optionArray;
 }
 
 // 3. toggleCommentSection
