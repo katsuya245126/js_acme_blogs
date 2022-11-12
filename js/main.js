@@ -75,6 +75,19 @@ function toggleCommentSection(postId) {
 // e. Suggestion (not required) for above: try a ternary statement
 // f. Return the button element
 
+function toggleCommentButton(postId) {
+  if (!postId) return undefined;
+  let commButton = document.querySelector(`button[data-post-id="${postId}"]`);
+  if (commButton == undefined) return null;
+
+  commButton.textContent =
+    commButton.textContent == "Show Comments"
+      ? "Hide Comments"
+      : "Show Comments";
+
+  return commButton;
+}
+
 // 5. deleteChildElements
 // a. Receives a parentElement as a parameter
 // b. Define a child variable as parentElement.lastElementChild
