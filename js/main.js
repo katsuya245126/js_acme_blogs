@@ -29,6 +29,10 @@ function createElemWithText(elem = "p", textContent = "", className) {
 // h. Assigns the user.name to the option.textContent
 // i. Return an array of options elements
 
+function createSelectOptions(userData) {
+  if (!userData) return undefined;
+}
+
 // 3. toggleCommentSection
 // a. Receives a postId as the parameter
 // b. Selects the section element with the data-post-id attribute equal to the postId
