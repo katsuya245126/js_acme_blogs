@@ -57,11 +57,13 @@ function createSelectOptions(userData) {
 
 function toggleCommentSection(postId) {
   if (!postId) return undefined;
-  let commSection = document.querySelector(`section[data-post-id="${postId}"]`);
-  if (commSection == undefined) return null;
-  commSection.classList.toggle("hide");
+  let commentSection = document.querySelector(
+    `section[data-post-id="${postId}"]`
+  );
+  if (commentSection == undefined) return null;
+  commentSection.classList.toggle("hide");
 
-  return commSection;
+  return commentSection;
 }
 
 // 4. toggleCommentButton
@@ -77,15 +79,17 @@ function toggleCommentSection(postId) {
 
 function toggleCommentButton(postId) {
   if (!postId) return undefined;
-  let commButton = document.querySelector(`button[data-post-id="${postId}"]`);
-  if (commButton == undefined) return null;
+  let commentButton = document.querySelector(
+    `button[data-post-id="${postId}"]`
+  );
+  if (commentButton == undefined) return null;
 
-  commButton.textContent =
-    commButton.textContent == "Show Comments"
+  commentButton.textContent =
+    commentButton.textContent == "Show Comments"
       ? "Hide Comments"
       : "Show Comments";
 
-  return commButton;
+  return commentButton;
 }
 
 // 5. deleteChildElements
