@@ -55,6 +55,15 @@ function createSelectOptions(userData) {
 // e. Toggles the class 'hide' on the section element
 // f. Return the section element
 
+function toggleCommentSection(postId) {
+  if (!postId) return undefined;
+  let commSection = document.querySelector(`section[data-post-id="${postId}"]`);
+  if (commSection == undefined) return null;
+  commSection.classList.toggle("hide");
+
+  return commSection;
+}
+
 // 4. toggleCommentButton
 // a. Receives a postId as the parameter
 // b. Selects the button with the data-post-id attribute equal to the postId received as a
