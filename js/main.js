@@ -130,6 +130,8 @@ function deleteChildElements(parentElement) {
 // will pass for addButtonListeners until toggleComments exists. I recommend
 // waiting on the logic inside the toggleComments function until we get there.
 
+function addButtonListeners() {}
+
 // 7. removeButtonListeners
 // a. Selects all buttons nested inside the main element
 // b. Loops through the NodeList of buttons
