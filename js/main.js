@@ -103,6 +103,19 @@ function toggleCommentButton(postId) {
 // self-contained which is ideal. That is not always possible though. We will try to limit
 // dependencies as we go. The next several functions have small dependencies.
 
+function deleteChildElements(parentElement) {
+  if (!(parentElement instanceof HTMLElement)) return undefined;
+
+  let childElement = parentElement.lastElementChild;
+
+  while (childElement != null) {
+    parentElement.removeChild(childElement);
+    childElement = parentElement.lastElementChild;
+  }
+
+  return parentElement;
+}
+
 // 6. addButtonListeners
 // a. Selects all buttons nested inside the main element
 // b. If buttons exist:
