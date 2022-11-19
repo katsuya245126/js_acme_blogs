@@ -180,7 +180,23 @@ function removeButtonListeners() {
 // k. Append the article element to the fragment
 // l. Return the fragment element
 
-function createComments() {}
+function createComments(comments) {
+  if (!comments) return undefined;
+
+  let frag = document.createDocumentFragment();
+
+  comments.forEach((comment) => {
+    let article = document.createElement("article");
+    let heading = createElemWithText("h3", comment.name);
+    let body = createElemWithText("p", comment.body);
+    let email = createElemWithText("p", `From: ${comment.email}`);
+
+    article.append(heading, body, email);
+    frag.append(article);
+  });
+
+  return frag;
+}
 
 // 9. populateSelectMenu
 // a. Depends on the createSelectOptions function we created
