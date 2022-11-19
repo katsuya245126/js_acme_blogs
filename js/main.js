@@ -211,7 +211,18 @@ function createComments(comments) {
 // Week 13. I do not recommend proceeding beyond this point until you have completed the
 // learning module for Week 13.
 
-function populateSelectMenu() {}
+function populateSelectMenu(users) {
+  if (!users) return undefined;
+
+  let selectMenu = document.querySelector("#selectMenu");
+  let userOptions = createSelectOptions(users);
+
+  userOptions.forEach((user) => {
+    selectMenu.append(user);
+  });
+
+  return selectMenu;
+}
 
 // 10. getUsers
 // a. Fetches users data from: https://jsonplaceholder.typicode.com/ (look at
