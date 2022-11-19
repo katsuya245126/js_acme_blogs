@@ -130,7 +130,18 @@ function deleteChildElements(parentElement) {
 // will pass for addButtonListeners until toggleComments exists. I recommend
 // waiting on the logic inside the toggleComments function until we get there.
 
-function addButtonListeners() {}
+function addButtonListeners() {
+  let buttons = document.querySelectorAll("main > button");
+
+  buttons.forEach((button) => {
+    let postId = button.dataset.postId;
+    button.addEventListener("onclick", () => {
+      toggleComments(event, postId);
+    });
+  });
+
+  return buttons;
+}
 
 // 7. removeButtonListeners
 // a. Selects all buttons nested inside the main element
@@ -141,7 +152,18 @@ function addButtonListeners() {}
 // e. Refer to the addButtonListeners function as this should be nearly identical
 // f. Return the button elements which were selected
 
-function removeButtonListeners() {}
+function removeButtonListeners() {
+  let buttons = document.querySelectorAll("main > button");
+
+  buttons.forEach((button) => {
+    let postId = button.dataset.postId;
+    button.removeEventListener("onclick", () => {
+      toggleComments(event, postId);
+    });
+  });
+
+  return buttons;
+}
 
 // 8. createComments
 // a. Depends on the createElemWithText function we created
