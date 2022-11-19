@@ -141,6 +141,8 @@ function addButtonListeners() {}
 // e. Refer to the addButtonListeners function as this should be nearly identical
 // f. Return the button elements which were selected
 
+function removeButtonListeners() {}
+
 // 8. createComments
 // a. Depends on the createElemWithText function we created
 // b. Receives JSON comments data as a parameter
@@ -156,6 +158,8 @@ function addButtonListeners() {}
 // k. Append the article element to the fragment
 // l. Return the fragment element
 
+function createComments() {}
+
 // 9. populateSelectMenu
 // a. Depends on the createSelectOptions function we created
 // b. Receives the users JSON data as a parameter
@@ -169,6 +173,8 @@ function addButtonListeners() {}
 // Week 13. I do not recommend proceeding beyond this point until you have completed the
 // learning module for Week 13.
 
+function populateSelectMenu() {}
+
 // 10. getUsers
 // a. Fetches users data from: https://jsonplaceholder.typicode.com/ (look at
 // Resources section)
@@ -177,6 +183,8 @@ function addButtonListeners() {}
 // d. Uses the fetch API to request all users
 // e. Await the users data response
 // f. Return the JSON data
+
+function getUsers() {}
 
 // 11. getUserPosts
 // a. Receives a user id as a parameter
@@ -188,6 +196,8 @@ function addButtonListeners() {}
 // f. Await the users data response
 // g. Return the JSON data
 
+function getUserPosts() {}
+
 // 12. getUser
 // a. Receives a user id as a parameter
 // b. Fetches data for a specific user id from: https://jsonplaceholder.typicode.com/
@@ -197,6 +207,8 @@ function addButtonListeners() {}
 // e. Uses the fetch API to request a specific user id
 // f. Await the user data response
 // g. Return the JSON data
+
+function getUser() {}
 
 // 13. getPostComments
 // a. Receives a post id as a parameter
@@ -211,6 +223,8 @@ function addButtonListeners() {}
 // Therefore, these functions will also need to be async. When they call the API functions, they will
 // need to await data from those functions.
 
+function getPostComments() {}
+
 // 14. displayComments
 // a. Dependencies: getPostComments, createComments
 // b. Is an async function
@@ -223,6 +237,8 @@ function addButtonListeners() {}
 // h. Creates a variable named fragment equal to createComments(comments)
 // i. Append the fragment to the section
 // j. Return the section element
+
+function displayComments() {}
 
 // 15. createPosts
 // a. Dependencies: createElemWithText, getUser, displayComments
@@ -249,6 +265,8 @@ function addButtonListeners() {}
 // s. After the loop completes, append the article element to the fragment
 // t. Return the fragment element
 
+function createPosts() {}
+
 // 16. displayPosts
 // a. Dependencies: createPosts, createElemWithText
 // b. Is an async function
@@ -265,6 +283,8 @@ function addButtonListeners() {}
 // to pull the other functions together in an order that allows the web app to function as it should.
 // This means their sole purpose is to call dependencies with the correct data in the proper order.
 
+function displayPosts() {}
+
 // 17. toggleComments
 // a. Dependencies: toggleCommentSection, toggleCommentButton
 // b. Receives 2 parameters: (see addButtonListeners function description)
@@ -278,6 +298,8 @@ function addButtonListeners() {}
 // h. Return an array containing the section element returned from
 // toggleCommentSection and the button element returned from
 // toggleCommentButton: [section, button]
+
+function toggleComments() {}
 
 // 18. refreshPosts
 // a. Dependencies: removeButtonListeners, deleteChildElements, displayPosts,
@@ -295,6 +317,8 @@ function addButtonListeners() {}
 // l. Return an array of the results from the functions called: [removeButtons, main,
 // fragment, addButtons]
 
+function refreshPosts() {}
+
 // 19. selectMenuChangeEventHandler
 // a. Dependencies: getUserPosts, refreshPosts
 // b. Should be an async function
@@ -309,6 +333,8 @@ function addButtonListeners() {}
 // k. Return an array with the userId, posts and the array returned from refreshPosts:
 // [userId, posts, refreshPostsArray]
 
+function selectMenuChangeEventHandler() {}
+
 // 20. initPage
 // a. Dependencies: getUsers, populateSelectMenu
 // b. Should be an async function
@@ -320,6 +346,8 @@ function addButtonListeners() {}
 // h. Return an array with users JSON data from getUsers and the select element
 // result from populateSelectMenu: [users, select]
 
+function initPage() {}
+
 // 21. initApp
 // a. Dependencies: initPage, selectMenuChangeEventHandler
 // b. Call the initPage() function.
@@ -329,3 +357,5 @@ function addButtonListeners() {}
 // event fires for the #selectMenu
 // f. NOTE: All of the above needs to be correct for you app to function correctly.
 // However, I can only test if the initApp function exists. It does not return anything.
+
+function initApp() {}
