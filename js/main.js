@@ -238,6 +238,7 @@ async function getUsers() {
     let users = await fetch("https://jsonplaceholder.typicode.com/users");
 
     if (!users.ok) throw await users.json();
+    userId;
 
     return users.json();
   } catch (e) {
@@ -255,11 +256,11 @@ async function getUsers() {
 // f. Await the users data response
 // g. Return the JSON data
 
-async function getUserPosts(userID) {
-  if (!userID) return undefined;
+async function getUserPosts(userId) {
+  if (!userId) return undefined;
   try {
     let userPosts = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?userId=${userID}`
+      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
     );
 
     if (!userPosts.ok) throw await userPosts.json();
@@ -280,12 +281,12 @@ async function getUserPosts(userID) {
 // f. Await the user data response
 // g. Return the JSON data
 
-async function getUser(userID) {
-  if (!userID) return undefined;
+async function getUser(userId) {
+  if (!userId) return undefined;
 
   try {
     let user = await fetch(
-      `https://jsonplaceholder.typicode.com/users/${userID}`
+      `https://jsonplaceholder.typicode.com/users/${userId}`
     );
 
     if (!user.ok) throw await user.json();
@@ -309,11 +310,11 @@ async function getUser(userID) {
 // Therefore, these functions will also need to be async. When they call the API functions, they will
 // need to await data from those functions.
 
-async function getPostComments(postID) {
-  if (!postID) return undefined;
+async function getPostComments(postId) {
+  if (!postId) return undefined;
   try {
     let postComments = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${postID}/comments`
+      `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
     );
 
     if (!postComments.ok) throw await postComments.json();
@@ -337,7 +338,7 @@ async function getPostComments(postID) {
 // i. Append the fragment to the section
 // j. Return the section element
 
-function displayComments() {}
+async function displayComments(postId) {}
 
 // 15. createPosts
 // a. Dependencies: createElemWithText, getUser, displayComments
