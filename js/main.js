@@ -233,7 +233,17 @@ function populateSelectMenu(users) {
 // e. Await the users data response
 // f. Return the JSON data
 
-function getUsers() {}
+async function getUsers() {
+  try {
+    let users = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    if (!users.ok) throw await users.json();
+
+    return users.json();
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 // 11. getUserPosts
 // a. Receives a user id as a parameter
