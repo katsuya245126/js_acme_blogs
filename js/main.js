@@ -238,7 +238,6 @@ async function getUsers() {
     let users = await fetch("https://jsonplaceholder.typicode.com/users");
 
     if (!users.ok) throw await users.json();
-    userId;
 
     return users.json();
   } catch (e) {
@@ -377,7 +376,40 @@ async function displayComments(postId) {
 // s. After the loop completes, append the article element to the fragment
 // t. Return the fragment element
 
-function createPosts() {}
+async function createPosts(posts) {
+  if (!posts) return undefined;
+  let fragment = document.createDocumentFragment();
+
+  for (const post of posts) {
+    let article = document.createElement("article");
+
+    let h2 = document.createElement("h2");
+    h2.textContent = post.title;
+
+    let body = document.createElement("p");
+    body.textContent = post.body;
+
+    let postId = document.createElement("p");
+    postId.textContent = `Post ID: ${post.id}`;
+
+    let author = await getUser(post.userId);
+    let company = document.createElement("p");
+    company.textContent = `Author: ${author.name} with ${author.company.name}`;
+    let catchPhrase = document.createElement("p");
+    catchPhrase.textContent = author.company.catchPhrase;
+
+    let button = document.createElement("button");
+    button.textContent = "Show Comments";
+    button.dataset.postId = post.id;
+
+    article.append(h2, body, postId, author, company, catchPhrase, button);
+    let section = await displayComments(post.id);
+    article.append(section);
+    fragment.append(article);
+  }
+
+  return fragment;
+}
 
 // 16. displayPosts
 // a. Dependencies: createPosts, createElemWithText
