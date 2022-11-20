@@ -309,7 +309,20 @@ async function getUser(userID) {
 // Therefore, these functions will also need to be async. When they call the API functions, they will
 // need to await data from those functions.
 
-function getPostComments() {}
+async function getPostComments(postID) {
+  if (!postID) return undefined;
+  try {
+    let postComments = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postID}/comments`
+    );
+
+    if (!postComments.ok) throw await postComments.json();
+
+    return postComments.json();
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 // 14. displayComments
 // a. Dependencies: getPostComments, createComments
