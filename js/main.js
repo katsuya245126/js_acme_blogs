@@ -280,7 +280,21 @@ async function getUserPosts(userID) {
 // f. Await the user data response
 // g. Return the JSON data
 
-function getUser() {}
+async function getUser(userID) {
+  if (!userID) return undefined;
+
+  try {
+    let user = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${userID}`
+    );
+
+    if (!user.ok) throw await user.json();
+
+    return user.json();
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 // 13. getPostComments
 // a. Receives a post id as a parameter
