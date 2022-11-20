@@ -382,24 +382,18 @@ async function createPosts(posts) {
 
   for (const post of posts) {
     let article = document.createElement("article");
-
-    let h2 = document.createElement("h2");
-    h2.textContent = post.title;
-
-    let body = document.createElement("p");
-    body.textContent = post.body;
-
-    let postId = document.createElement("p");
-    postId.textContent = `Post ID: ${post.id}`;
+    let h2 = createElemWithText("h2", post.title);
+    let body = createElemWithText("p", post.body);
+    let postId = createElemWithText("p", `Post ID: ${post.id}`);
 
     let author = await getUser(post.userId);
-    let company = document.createElement("p");
-    company.textContent = `Author: ${author.name} with ${author.company.name}`;
-    let catchPhrase = document.createElement("p");
-    catchPhrase.textContent = author.company.catchPhrase;
+    let company = createElemWithText(
+      "p",
+      `Author: ${author.name} with ${author.company.name}`
+    );
+    let catchPhrase = createElemWithText("p", author.company.catchPhrase);
 
-    let button = document.createElement("button");
-    button.textContent = "Show Comments";
+    let button = createElemWithText("button", "Show Comments");
     button.dataset.postId = post.id;
 
     article.append(h2, body, postId, author, company, catchPhrase, button);
