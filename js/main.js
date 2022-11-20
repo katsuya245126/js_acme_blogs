@@ -338,7 +338,19 @@ async function getPostComments(postId) {
 // i. Append the fragment to the section
 // j. Return the section element
 
-async function displayComments(postId) {}
+async function displayComments(postId) {
+  if (!postId) return undefined;
+
+  let section = document.createElement("section");
+  section.dataset.postId = postId;
+  section.classList.add("comments", "hide");
+
+  let comments = await getPostComments(postId);
+  let fragment = createComments(comments);
+  section.append(fragment);
+
+  return section;
+}
 
 // 15. createPosts
 // a. Dependencies: createElemWithText, getUser, displayComments
