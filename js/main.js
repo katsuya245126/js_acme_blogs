@@ -526,7 +526,11 @@ async function selectMenuChangeEventHandler() {
 // h. Return an array with users JSON data from getUsers and the select element
 // result from populateSelectMenu: [users, select]
 
-function initPage() {}
+async function initPage() {
+  let users = await getUsers();
+  let selectMenu = populateSelectMenu(users);
+  return [users, selectMenu];
+}
 
 // 21. initApp
 // a. Dependencies: initPage, selectMenuChangeEventHandler
@@ -538,4 +542,10 @@ function initPage() {}
 // f. NOTE: All of the above needs to be correct for you app to function correctly.
 // However, I can only test if the initApp function exists. It does not return anything.
 
-function initApp() {}
+function initApp() {
+  initPage();
+  let selectMenu = document.querySelector("#selectMenu");
+  selectMenu.addEventListener("change", () => {
+    selectMenuChangeEventHandler();
+  });
+}
