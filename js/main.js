@@ -131,12 +131,12 @@ function deleteChildElements(parentElement) {
 // waiting on the logic inside the toggleComments function until we get there.
 
 function addButtonListeners() {
-  let buttons = document.querySelectorAll("main > button");
+  let buttons = document.querySelectorAll("main button");
   if (!buttons) return undefined;
 
   buttons.forEach((button) => {
     let postId = button.dataset.postId;
-    button.addEventListener("onclick", (event) => {
+    button.addEventListener("click", (event) => {
       toggleComments(event, postId);
     });
   });
@@ -154,11 +154,12 @@ function addButtonListeners() {
 // f. Return the button elements which were selected
 
 function removeButtonListeners() {
-  let buttons = document.querySelectorAll("main > button");
+  let buttons = document.querySelectorAll("main button");
+  if (!buttons) return undefined;
 
   buttons.forEach((button) => {
     let postId = button.dataset.postId;
-    button.removeEventListener("onclick", () => {
+    button.removeEventListener("click", (event) => {
       toggleComments(event, postId);
     });
   });
@@ -477,7 +478,16 @@ function toggleComments(event, postId) {
 // l. Return an array of the results from the functions called: [removeButtons, main,
 // fragment, addButtons]
 
-function refreshPosts() {}
+async function refreshPosts(posts) {
+  if (!posts) return undefined;
+
+  let removeButtons = removeButtonListeners();
+  let main = deleteChildElements(document.querySelector("main"));
+  let docFragment = await displayPosts(posts);
+  let addButtons = addButtonListeners();
+
+  return [removeButtons, main, docFragment, addButtons];
+}
 
 // 19. selectMenuChangeEventHandler
 // a. Dependencies: getUserPosts, refreshPosts
