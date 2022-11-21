@@ -132,10 +132,11 @@ function deleteChildElements(parentElement) {
 
 function addButtonListeners() {
   let buttons = document.querySelectorAll("main > button");
+  if (!buttons) return undefined;
 
   buttons.forEach((button) => {
     let postId = button.dataset.postId;
-    button.addEventListener("onclick", () => {
+    button.addEventListener("onclick", (event) => {
       toggleComments(event, postId);
     });
   });
@@ -451,7 +452,14 @@ async function displayPosts(posts) {
 // toggleCommentSection and the button element returned from
 // toggleCommentButton: [section, button]
 
-function toggleComments() {}
+function toggleComments(event, postId) {
+  if (!event || !postId) return undefined;
+
+  event.target.listener = true;
+  let commentSection = toggleCommentSection(postId);
+  let commentButton = toggleCommentButton(postId);
+  return [commentSection, commentButton];
+}
 
 // 18. refreshPosts
 // a. Dependencies: removeButtonListeners, deleteChildElements, displayPosts,
