@@ -503,7 +503,17 @@ async function refreshPosts(posts) {
 // k. Return an array with the userId, posts and the array returned from refreshPosts:
 // [userId, posts, refreshPostsArray]
 
-function selectMenuChangeEventHandler() {}
+async function selectMenuChangeEventHandler() {
+  let selectMenu = document.querySelector("#selectMenu");
+  selectMenu.setAttribute("disabled", "");
+
+  let userId = event?.target.value || 1;
+  let userPosts = await getUserPosts(userId);
+  let refreshPostsArray = await refreshPosts(userPosts);
+
+  selectMenu.removeAttribute("disabled");
+  return [userId, userPosts, refreshPostsArray];
+}
 
 // 20. initPage
 // a. Dependencies: getUsers, populateSelectMenu
