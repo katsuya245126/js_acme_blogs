@@ -421,7 +421,21 @@ async function createPosts(posts) {
 // to pull the other functions together in an order that allows the web app to function as it should.
 // This means their sole purpose is to call dependencies with the correct data in the proper order.
 
-function displayPosts() {}
+async function displayPosts(posts) {
+  let main = document.querySelector("main");
+
+  let element =
+    posts != undefined
+      ? await createPosts(posts)
+      : createElemWithText(
+          "p",
+          "Select an Employee to display their posts.",
+          "default-text"
+        );
+
+  main.append(element);
+  return element;
+}
 
 // 17. toggleComments
 // a. Dependencies: toggleCommentSection, toggleCommentButton
