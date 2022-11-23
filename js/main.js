@@ -545,7 +545,5 @@ async function initPage() {
 function initApp() {
   initPage();
   let selectMenu = document.querySelector("#selectMenu");
-  selectMenu.addEventListener("change", () => {
-    selectMenuChangeEventHandler();
-  });
+  selectMenu.addEventListener("change", selectMenuChangeEventHandler);
 }
