@@ -503,7 +503,7 @@ async function refreshPosts(posts) {
 // k. Return an array with the userId, posts and the array returned from refreshPosts:
 // [userId, posts, refreshPostsArray]
 
-async function selectMenuChangeEventHandler() {
+async function selectMenuChangeEventHandler(event) {
   let selectMenu = document.querySelector("#selectMenu");
   selectMenu.setAttribute("disabled", "");
 
