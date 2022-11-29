@@ -504,10 +504,11 @@ async function refreshPosts(posts) {
 // [userId, posts, refreshPostsArray]
 
 async function selectMenuChangeEventHandler(event) {
+  if (!event) return undefined;
   let selectMenu = document.querySelector("#selectMenu");
   selectMenu.setAttribute("disabled", "");
 
-  let userId = event?.target.value || 1;
+  let userId = event?.target?.value || 1;
   let userPosts = await getUserPosts(userId);
   let refreshPostsArray = await refreshPosts(userPosts);
 
