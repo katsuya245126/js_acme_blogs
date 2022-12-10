@@ -220,7 +220,7 @@ function populateSelectMenu(users) {
   let userOptions = createSelectOptions(users);
 
   userOptions.forEach((user) => {
-    selectMenu.append(user);
+    selectMenu.appendChild(user);
   });
 
   return selectMenu;
@@ -261,7 +261,7 @@ async function getUserPosts(userId) {
   if (!userId) return undefined;
   try {
     let userPosts = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+      `https://jsonplaceholder.typicode.com/users/${userId}/posts`
     );
 
     if (!userPosts.ok) throw await userPosts.json();
@@ -513,6 +513,7 @@ async function selectMenuChangeEventHandler(event) {
   let refreshPostsArray = await refreshPosts(userPosts);
 
   selectMenu.removeAttribute("disabled");
+
   return [userId, userPosts, refreshPostsArray];
 }
 
