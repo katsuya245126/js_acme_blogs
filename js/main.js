@@ -222,7 +222,6 @@ function populateSelectMenu(users) {
   userOptions.forEach((user) => {
     selectMenu.appendChild(user);
   });
-
   return selectMenu;
 }
 
@@ -549,3 +548,5 @@ function initApp() {
   let selectMenu = document.querySelector("#selectMenu");
   selectMenu.addEventListener("change", selectMenuChangeEventHandler);
 }
+
+initApp();
